@@ -1,0 +1,69 @@
+{% extends 'drift_detector/base.html' %}
+
+{% block content %}
+    <div class="row mt-3 mb-3">
+        <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+            <label for="selectLanguage">Language</label>
+            <select id="selectLanguage" class="browser-default custom-select">
+                <option selected value="">--None--</option>
+                <option value="es">Spanish</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-3 mb-3">
+        <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+            <label for="rangeWindows">Windows</label>
+            <div class="d-flex">
+                <input type="range" class="custom-range" name="rangeWindows" id="rangeWindows" min="1" max="10"  oninput="updateWindowsValue(this.value)" value="1">
+                <span class="text-primary ml-2" id="rangeWindowsValue">1</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3 mb-3">
+        <div class=" col-12 col-lg-12 col-md-12 col-sm-12">
+            <label for="rangeKeywords">Keywords</label>
+            <div class="d-flex">
+                <input type="range" class="custom-range" name="rangeKeywords" id="rangeKeywords" min="1" max="10"  oninput="updateKeywordsValue(this.value)" value="1">
+                <span class="text-primary ml-2" id="rangeKeywordsValue">1</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3 mb-3">
+        <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputFile">
+                <label for="inputFile" class="custom-file-label">Choose file ...</label>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3 mb-3">
+        <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+            <button type="submit" class="btn btn-primary">Run Analysis</button>
+        </div>
+        <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+            <button type="button" class="btn btn-danger" onclick="resetForm()">Reset</button>
+        </div>
+    </div>
+
+    
+    
+    <!-- Javascript -->
+    <script>
+        function updateWindowsValue(rangeValue) {
+            $('#rangeWindowsValue').text(rangeValue);
+        }
+
+        function updateKeywordsValue(rangeValue) {
+            $('#rangeKeywordsValue').text(rangeValue);
+        }
+
+        function resetForm() {
+            $('#selectLanguage').val("");
+            $('#rangeWindows').val(1);
+            $('#rangeWindowsValue').text("1");
+            $('#rangeKeywords').val(1);
+            $('#rangeKeywordsValue').text("1");
+        }
+    </script>
+{% endblock %}
